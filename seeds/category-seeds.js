@@ -32,7 +32,7 @@ const seedCategories = async () => {
   //     reader_id: id,
   //   });
 
-  process.exit(0);
+  // process.exit(0);
 };
 
 

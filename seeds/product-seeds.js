@@ -1,3 +1,4 @@
+const sequelize = require("../config/connection");
 const { Product } = require('../models');
 
 const productData = [
@@ -33,6 +34,20 @@ const productData = [
   },
 ];
 
-const seedProducts = () => Product.bulkCreate(productData);
+const seedProducts = async () => {
+  await sequelize.sync();
 
+  const product = await Product.bulkCreate(productData, {
+    individualHooks: true,
+    returning: true,
+  });
+
+  // for (const { id } of readers) {
+  //   const newCard = await LibraryCard.create({
+  //     reader_id: id,
+  //   });
+
+  // process.exit(0);
+};
+  
 module.exports = seedProducts;

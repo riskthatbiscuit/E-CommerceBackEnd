@@ -1,4 +1,5 @@
-const { ProductTag } = require('../models');
+const sequelize = require("../config/connection");
+const { ProductTag } = require("../models");
 
 const productTagData = [
   {
@@ -51,6 +52,20 @@ const productTagData = [
   },
 ];
 
-const seedProductTags = () => ProductTag.bulkCreate(productTagData);
+const seedProductTags = async () => {
+  await sequelize.sync();
+
+  const category = await ProductTag.bulkCreate(productTagData, {
+    individualHooks: true,
+    returning: true,
+  });
+
+  // for (const { id } of readers) {
+  //   const newCard = await LibraryCard.create({
+  //     reader_id: id,
+  //   });
+
+  // process.exit(0);
+};
 
 module.exports = seedProductTags;
