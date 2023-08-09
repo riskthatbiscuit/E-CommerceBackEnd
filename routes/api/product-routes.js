@@ -5,11 +5,17 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // get all products
 router.get('/', async (req, res) => {
-  // be sure to include its associated Category and Tag data
   try {
     const productData = await Product.findAll({
-      // This will retrieve every category's associated Product data. In SQL, this would be a JOIN function.
-      include: [{ model: Tag }, {model: Category}],
+      include: [
+      { 
+        model: Category,
+        attributes: ['category_name'],
+      }, { 
+        model: Tag,
+        attributes: ['tag_name'],
+        through: { attributes: [] },
+      }],
     });
 
     if (!productData) {
