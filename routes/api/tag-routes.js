@@ -50,8 +50,19 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// create a new tag
 router.post('/', (req, res) => {
-  // create a new tag
+  /* req.body should look like this...
+    {
+      tag_name: "gold",
+    }
+  */
+  Tag.create(req.body)
+    .then((tag) => res.status(200).json(tag))
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
+    });
 });
 
 router.put('/:id', (req, res) => {
