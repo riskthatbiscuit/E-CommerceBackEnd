@@ -66,17 +66,22 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-    Tag.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
+  /* req.body should look like this...
+    {
+      tag_name: "gold",
+    }
+  */
+  Tag.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((tag) => {
+      return res.json(tag);
     })
-      .then((tag) => {
-        return res.json(tag);
-      })
-      .catch((err) => {
-        res.status(400).json(err);
-      });
+    .catch((err) => {
+      res.status(400).json(err);
+    });
 });
 
 // delete on tag by its `id` value

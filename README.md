@@ -6,7 +6,7 @@
 
 The E-Commerce Back-End is a server-side application that provides the backend functionality for an e-commerce website. It utilizes a Sequelize ORM (Object-Relational Mapping) to interact with a MySQL database, allowing users to manage products, categories, and tags. The application supports CRUD (Create, Read, Update, Delete) operations for products, categories, and tags, providing a seamless experience for managing e-commerce inventory.
 
-## ⚙️ Installation
+## 🎬 Installation
 
 1. Clone the repository to your local machine.
 2. Navigate to the project directory in your terminal.

@@ -36,12 +36,6 @@ const seedTags = async () => {
     returning: true,
   });
 
-  // for (const { id } of readers) {
-  //   const newCard = await LibraryCard.create({
-  //     reader_id: id,
-  //   });
-
-  // process.exit(0);
 };
 
 module.exports = seedTags;
